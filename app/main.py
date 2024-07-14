@@ -2,8 +2,9 @@ from fastapi import FastAPI, Header, HTTPException
 from fastapi.responses import FileResponse
 from pymongo import MongoClient
 from motor.motor_asyncio import AsyncIOMotorClient
+from env import MONGODB_URl
 
-client = MongoClient("mongodb://par6:Haaaaa@hs.5-23.dev:3000")
+client = MongoClient(MONGODB_URl)
 db = client['para_user']
 
 app = FastAPI()
