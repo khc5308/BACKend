@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>회원가입</title>
+  <script>
+    async function handleSubmit(event) {
+      event.preventDefault();
+      
+      const id = document.getElementById('id').value;
+      const password = document.getElementById('password').value;
+
+      const response = await fetch('/exit_submit', {
+        method: 'get',
+        headers: {
+          'Content-Type': 'application/json',
+          'id': id,
+          'pw': password
+        }
+      });
+
+      const result = await response.json();
+      console.log(result);
+      
+    }
+  </script>
+</head>
+<body>
+  <form onsubmit="handleSubmit(event)">
+    <h1>탈퇴하기</h1>
+    
+    <h3>ID</h3>
+    <input type="text" id="id" name="id" required>
+    
+    <h3>Password</h3>
+    <input type="password" id="password" name="password" required>
+    
+    <br>
+    <button type="submit">제출</button>
+  </form>
+</body>
+</html>
